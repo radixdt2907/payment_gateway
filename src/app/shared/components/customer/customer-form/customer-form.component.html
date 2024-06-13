@@ -1,0 +1,32 @@
+<form [formGroup]="customerForm" (ngSubmit)="handleSubmit()">
+  <div class="example-container">
+    <mat-form-field>
+      <mat-label>Enter your email</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        formControlName="email"
+        required
+      />
+      <mat-error *ngIf="isInvalid('email', 'required')"
+        >Email is Required</mat-error
+      >
+      <mat-error *ngIf="isInvalid('email', 'email')"
+        >Enter a valid Email</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter your Display Name</mat-label>
+      <input
+        matInput
+        placeholder="ChuckField"
+        formControlName="display_name"
+        required
+      />
+      <mat-error *ngIf="isInvalid('email', 'required')">Enter a name</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit">Create a Customer</button>
+  </div>
+</form>
