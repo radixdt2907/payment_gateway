@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CustomerFormComponent } from './shared/components/customer/customer-form/customer-form.component';
 import { CustomerListComponent } from './shared/components/customer/customer-list/customer-list.component';
 import { CustomerCardComponent } from './shared/components/customer/customer-list/customer-card/customer-card.component';
+import { PlanComponent } from './components/plan/plan.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CustomerCardComponent } from './shared/components/customer/customer-lis
     CustomerFormComponent,
     CustomerListComponent,
     CustomerCardComponent,
+    PlanComponent,
   ],
   imports: [
     MaterialModule,
