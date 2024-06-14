@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { CurrSelectedDataService } from './shared/services/currSelectedData/curr-selected-data.service';
+import { HostedPageService } from './shared/services/hostedPage/hosted-page.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class AppComponent {
   title = 'payment_gateway';
 
-  constructor(private _formBuilder: FormBuilder) {}
-  firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
-  secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
+  constructor(protected currSelectedUser: CurrSelectedDataService, private hostedPageService: HostedPageService) {}
+
+  protected handlePayNow() {
+    this.hostedPageService.payNow()
+  }
 }

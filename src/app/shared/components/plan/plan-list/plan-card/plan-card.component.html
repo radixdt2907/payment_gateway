@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title
+      >{{ plan.name }} ({{ plan.recurring_price }})</mat-card-title
+    >
+    <mat-card-subtitle
+      >{{ plan.interval }} {{ plan.interval_unit }}</mat-card-subtitle
+    >
+  </mat-card-header>
+  <mat-card-content *ngIf="plan.addons.length > 0">
+    <!-- <p>Addons</p>
+    <p><mat-checkbox *ngFor="let addon of plan.addons">{{addon.addon_code}} - {{addon.price_brackets[0].price}}</mat-checkbox></p> -->
+  </mat-card-content>
+  <mat-card-actions>
+    <!-- <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button> -->
+  </mat-card-actions>
+</mat-card>

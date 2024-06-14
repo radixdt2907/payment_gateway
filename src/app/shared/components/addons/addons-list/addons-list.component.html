@@ -1,0 +1,9 @@
+<ng-container *ngIf="addonsList.length > 0; else addonsListEmpty">
+    <app-addons-card
+      *ngFor="let addon of addonsList; let i = index"
+      [addon]="addon"
+      [index]="i"
+    ></app-addons-card>
+</ng-container>
+
+<ng-template #addonsListEmpty> No Addon available! </ng-template>

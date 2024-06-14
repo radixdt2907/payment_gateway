@@ -1,0 +1,9 @@
+<label>
+  {{ addon.addon_code }}
+  <input
+    type="checkbox"
+    [value]="addon.addon_code"
+    (click)="handleAddOnClick(addon.addon_code, $event)"
+    [checked]="currSelectedUser.hasInAddon(addon.addon_code)"
+  />
+</label>

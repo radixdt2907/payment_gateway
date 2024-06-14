@@ -8,7 +8,7 @@ const {
 
 const zohoService = new ZohoService(
   process.env.ZOHO_BASE_URL,
-  "1000.37181d8a7168ed9478e1f845cc1de923.938a8dde8ca83114303162d2c9e8a3db",
+  process.env.OAUTH_TOKEN,
   process.env.ORGANIZATION_ID
 );
 

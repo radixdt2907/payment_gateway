@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatCardModule } from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const data: any[] = [
   MatStepperModule,
@@ -14,6 +15,7 @@ const data: any[] = [
   MatInputModule,
   MatButtonModule,
   MatCardModule,
+  MatCheckboxModule
 ];
 
 @NgModule({

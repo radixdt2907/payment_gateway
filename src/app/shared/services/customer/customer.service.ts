@@ -10,17 +10,17 @@ import { CustomerModel } from '../../models/customer.model';
 export class CustomerService {
   private readonly _serverCustomerUrl: string = `${config.BASE_SERVER_URL}/customer`;
 
-  constructor(private _httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
   /**
    * Fetches all customers from the server.
    * @returns An observable of the response.
    */
   public fetchAllCustomers = (): Observable<any> => {
-    return this._httpClient.get(this._serverCustomerUrl);
+    return this.httpClient.get(this._serverCustomerUrl);
   };
 
   public createCustomer = (customer: CustomerModel): Observable<any> => {
-    return this._httpClient.post(this._serverCustomerUrl, customer);
+    return this.httpClient.post(this._serverCustomerUrl, customer);
   }
 }

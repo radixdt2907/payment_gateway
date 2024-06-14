@@ -1,0 +1,5 @@
+<app-plan-card
+  *ngFor="let plan of planList"
+  [plan]="plan"
+  (click)="handlePlanCardClick(plan)"
+></app-plan-card>

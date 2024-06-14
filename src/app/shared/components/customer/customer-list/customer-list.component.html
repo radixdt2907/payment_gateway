@@ -1,1 +1,6 @@
-<app-customer-card *ngFor="let customer of customerList" [customer]="customer"></app-customer-card>
+<app-customer-card
+  matStepperNext
+  *ngFor="let customer of customerList"
+  [customer]="customer"
+  (click)="handleCustomerCardClick(customer)"
+></app-customer-card>

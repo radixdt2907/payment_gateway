@@ -10,7 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { CustomerFormComponent } from './shared/components/customer/customer-form/customer-form.component';
 import { CustomerListComponent } from './shared/components/customer/customer-list/customer-list.component';
 import { CustomerCardComponent } from './shared/components/customer/customer-list/customer-card/customer-card.component';
-import { PlanComponent } from './components/plan/plan.component';
+import { PlanComponent } from './shared/components/plan/plan.component';
+import { PlanListComponent } from './shared/components/plan/plan-list/plan-list.component';
+import { PlanCardComponent } from './shared/components/plan/plan-list/plan-card/plan-card.component';
+import { AddonsComponent } from './shared/components/addons/addons.component';
+import { AddonsListComponent } from './shared/components/addons/addons-list/addons-list.component';
+import { AddonsCardComponent } from './shared/components/addons/addons-list/addons-card/addons-card.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +26,11 @@ import { PlanComponent } from './components/plan/plan.component';
     CustomerListComponent,
     CustomerCardComponent,
     PlanComponent,
+    PlanListComponent,
+    PlanCardComponent,
+    AddonsComponent,
+    AddonsListComponent,
+    AddonsCardComponent,
   ],
   imports: [
     MaterialModule,
@@ -27,6 +38,8 @@ import { PlanComponent } from './components/plan/plan.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

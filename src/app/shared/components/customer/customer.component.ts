@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { CustomerService } from '../../services/customer/customer.service';
+import { Component, OnInit } from '@angular/core';
 import { CustomerModel } from '../../models/customer.model';
+import { CustomerService } from '../../services/customer/customer.service';
 
 @Component({
   selector: 'app-customer',
@@ -9,18 +8,17 @@ import { CustomerModel } from '../../models/customer.model';
   styleUrls: ['./customer.component.css'],
 })
 export class CustomerComponent implements OnInit {
-  @Input() firstFormGroup!: FormGroup;
 
   protected customerList: CustomerModel[] = [];
 
-  constructor(private _customerService: CustomerService) {}
+  constructor(private customerService: CustomerService) {}
   
   ngOnInit(): void {
     this.loadCustomers();
   }
 
   private loadCustomers(): void {
-    this._customerService.fetchAllCustomers().subscribe({
+    this.customerService.fetchAllCustomers().subscribe({
       next: (res) => {
         this.customerList = res.customers;
       },

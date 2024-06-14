@@ -11,6 +11,7 @@ class ZohoService {
     });
   }
 
+  // Customers
   async getCustomersAsync() {
     try {
       return await this.axios
@@ -42,6 +43,54 @@ class ZohoService {
       throw new Error(
         "Failed to create a new Customer in Zoho API: " + error.message
       );
+    }
+  }
+
+  // Plans
+  async getPlanAsync() {
+    try {
+      return await this.axios
+        .get("/plans")
+        .then((response) => {
+          return response;
+        })
+        .catch(({ response }) => {
+          return response;
+        });
+    } catch (error) {
+      throw new Error("Failed to fetch plans from Zoho API: " + error.message);
+    }
+  }
+
+  // Addons
+  async getAddonsAsync() {
+    try{
+      return await this.axios
+      .get("/addons")
+      .then((response) => {
+        return response;
+      })
+      .catch(({ response }) => {
+        return response;
+      });
+    } catch (error) {
+      throw new Error("Failed to fetch Addons from Zoho API: " + error.message);
+    }
+  }
+
+  // Subscription with Hosted Page
+  async createSubscriptionHostedPage(data) {
+    try{
+      return await this.axios
+      .post("/hostedpages/newsubscription", data)
+      .then((response) => {
+        return response;
+      })
+      .catch(({ response }) => {
+        return response;
+      });
+    } catch (error) {
+      throw new Error("Failed to create Hosted Page for subscription from Zoho API: " + error.message);
     }
   }
 }
