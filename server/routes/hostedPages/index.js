@@ -11,7 +11,7 @@ const zohoService = new ZohoService(
 // ROUTE: POST api/hosted-pages
 router.post("/", async (req, res) => {
   try {
-    const hostedPage = await zohoService.createSubscriptionHostedPage(req.body);
+    const hostedPage = await zohoService.createSubscriptionHostedPageAsync(req.body);
     res.status(hostedPage.status).send(hostedPage.data);
   } catch (err) {
     console.log(err.message);
