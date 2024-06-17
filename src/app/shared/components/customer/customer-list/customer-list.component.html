@@ -2,5 +2,6 @@
   matStepperNext
   *ngFor="let customer of customerList"
   [customer]="customer"
+  [currSelectedCustomer]="currSelectedData.form.get('customer')?.value"
   (click)="handleCustomerCardClick(customer)"
 ></app-customer-card>

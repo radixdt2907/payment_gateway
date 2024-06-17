@@ -10,7 +10,7 @@ import { CurrSelectedDataService } from 'src/app/shared/services/currSelectedDat
 export class CustomerListComponent {
   @Input('list') public customerList: CustomerModel[] = [];
 
-  constructor(private currSelectedData: CurrSelectedDataService) {}
+  constructor(protected currSelectedData: CurrSelectedDataService) {}
 
   protected handleCustomerCardClick = (customer: CustomerModel): void =>
     this.currSelectedData.updateCustomer(customer);

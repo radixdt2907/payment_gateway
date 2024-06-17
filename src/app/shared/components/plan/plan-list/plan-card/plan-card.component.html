@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card [ngClass]="{ active: currSelectedPlan.plan_id === plan.plan_id }">
   <mat-card-header>
     <mat-card-title
       >{{ plan.name }} ({{ plan.recurring_price }})</mat-card-title

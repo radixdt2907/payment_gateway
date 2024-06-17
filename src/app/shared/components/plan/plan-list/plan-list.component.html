@@ -1,5 +1,6 @@
 <app-plan-card
   *ngFor="let plan of planList"
   [plan]="plan"
+  [currSelectedPlan]="currSelectedData.form.get('plan')?.value"
   (click)="handlePlanCardClick(plan)"
 ></app-plan-card>
