@@ -17,6 +17,10 @@ import { AddonsComponent } from './shared/components/addons/addons.component';
 import { AddonsListComponent } from './shared/components/addons/addons-list/addons-list.component';
 import { AddonsCardComponent } from './shared/components/addons/addons-list/addons-card/addons-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomerSubscriptionComponent } from './shared/components/customer/customer-subscription/customer-subscription.component';
+import { CustomerPaymentHistoryComponent } from './shared/components/customer/customer-payment-history/customer-payment-history.component';
+import { MainComponent } from './shared/components/main/main.component';
+import { CustomerSubscriptionCardComponent } from './shared/components/customer/customer-subscription/customer-subscription-card/customer-subscription-card.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddonsComponent,
     AddonsListComponent,
     AddonsCardComponent,
+    CustomerSubscriptionComponent,
+    CustomerPaymentHistoryComponent,
+    MainComponent,
+    CustomerSubscriptionCardComponent,
   ],
   imports: [
     MaterialModule,
