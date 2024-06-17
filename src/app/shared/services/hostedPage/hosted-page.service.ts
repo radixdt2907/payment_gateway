@@ -31,8 +31,8 @@ export class HostedPageService {
         ),
       };
 
-      this.httpClient.post(this._serverHostedPageUrl, data).subscribe((res) => {
-        console.log('Line 30 >> ', res);
+      this.httpClient.post(this._serverHostedPageUrl, data).subscribe((res: any) => {
+        window.open(res.hostedpage.url)
       });
     } // TODO Handle Invalid things
   }

@@ -6,7 +6,11 @@ require('dotenv').config()
 
 const app = express();
 const port = 5000;
+
 const apiRoute = require("./routes");
+const connectToDbAsync = require('./db.js');
+
+connectToDbAsync();
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
