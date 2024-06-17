@@ -1,3 +1,7 @@
-<mat-card>
+<mat-card
+  [ngClass]="{
+    active: currSelectedCustomer.customer_id === customer.customer_id
+  }"
+>
   <mat-card-content>{{ customer.display_name }}</mat-card-content>
 </mat-card>

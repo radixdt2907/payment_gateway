@@ -9,4 +9,5 @@ import { CustomerModel } from 'src/app/shared/models/customer.model';
 export class CustomerCardComponent {
 
   @Input() customer!: CustomerModel;
+  @Input() currSelectedCustomer!: CustomerModel;
 }

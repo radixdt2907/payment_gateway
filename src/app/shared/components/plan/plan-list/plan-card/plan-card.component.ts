@@ -9,4 +9,5 @@ import PlanModel from 'src/app/shared/models/plan.model';
 export class PlanCardComponent {
  
   @Input() plan!: PlanModel;
+  @Input() currSelectedPlan!: PlanModel;
 }
