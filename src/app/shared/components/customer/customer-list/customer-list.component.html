@@ -3,5 +3,7 @@
   *ngFor="let customer of customerList"
   [customer]="customer"
   [currSelectedCustomer]="currSelectedData.form.get('customer')?.value"
-  (click)="handleCustomerCardClick(customer)"
+  (cardClick)="handleCustomerCardClick(customer)"
+  (getAllSubscriptionsClick)="handleGetAllSubscriptionsClick(customer.customer_id)"
+  (paymentHistoryClick)="handlePaymentHistoryClick()"
 ></app-customer-card>
