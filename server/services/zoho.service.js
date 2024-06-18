@@ -1,3 +1,5 @@
+const { v4: uuidv4 } = require('uuid');
+
 const axiosFactory = require("./axios.service");
 
 class ZohoService {
@@ -64,33 +66,70 @@ class ZohoService {
 
   // Addons
   async getAddonsAsync() {
-    try{
+    try {
       return await this.axios
-      .get("/addons")
-      .then((response) => {
-        return response;
-      })
-      .catch(({ response }) => {
-        return response;
-      });
+        .get("/addons")
+        .then((response) => {
+          return response;
+        })
+        .catch(({ response }) => {
+          return response;
+        });
     } catch (error) {
       throw new Error("Failed to fetch Addons from Zoho API: " + error.message);
     }
   }
 
   // Subscription with Hosted Page
-  async createSubscriptionHostedPage(data) {
-    try{
+  async createSubscriptionHostedPageAsync(data) {
+    try {
+      // Injecting random reference Id
+      data = {
+        ...data,
+        reference_id: uuidv4()
+      }
       return await this.axios
-      .post("/hostedpages/newsubscription", data)
-      .then((response) => {
-        return response;
-      })
-      .catch(({ response }) => {
-        return response;
-      });
+        .post("/hostedpages/newsubscription", data)
+        .then((response) => {
+          return response;
+        })
+        .catch(({ response }) => {
+          return response;
+        });
     } catch (error) {
-      throw new Error("Failed to create Hosted Page for subscription from Zoho API: " + error.message);
+      throw new Error(
+        "Failed to create Hosted Page for subscription from Zoho API: " +
+          error.message
+      );
+    }
+  }
+
+  // Fetch all Subscription based on Customer Id
+  async fetchAllSubscriptionAsync(params) {
+    try {
+      return await this.axios
+        .get("/subscriptions", { params })
+        .then((response) => {
+          return response;
+        })
+        .catch(({ response }) => {
+          return response;
+        });
+    } catch (error) {
+      throw new Error(
+        "Failed to fetch Subscription from Zoho API: " + error.message
+      );
+    }
+  }
+
+  // Payment
+  async getPaymentHistoryAsync(customer_id) {
+    try {
+
+    }catch (error) {
+      throw new Error(
+        "Failed to fetch Payment Info from Zoho API: " + error.message
+      );
     }
   }
 }

@@ -3,5 +3,16 @@
     active: currSelectedCustomer.customer_id === customer.customer_id
   }"
 >
-  <mat-card-content>{{ customer.display_name }}</mat-card-content>
+  <mat-card-content (click)="cardClick.next()">{{
+    customer.display_name
+  }}</mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button (click)="getAllSubscriptionsClick.next()">
+      Get All Subscriptions
+    </button>
+    <button mat-button (click)="paymentHistoryClick.next()">
+      Payment History
+    </button>
+  </mat-card-actions>
 </mat-card>

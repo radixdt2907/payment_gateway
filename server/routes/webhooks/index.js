@@ -2,37 +2,44 @@ const express = require("express");
 const router = express.Router();
 const PaymentStatusModel = require("../../models/paymentHistory");
 const validatePaymentStatus = require("../../middlewares/validate-paymentStatus.middleware");
+const {
+  createCustomerBodyValidationRule,
+  validateCreateCustomerBody,
+} = require("../../middlewares/validate-createCustomer.middleware");
 
 // ROUTE: POST api/webhooks/createCustomer
-router.post("/createCustomer", async (req, res) => {
-  try {
-    const reqBody = req.body;
-    const { customer_id } = reqBody.data.subscription;
+router.post(
+  "/createCustomer",
+  createCustomerBodyValidationRule(),
+  validateCreateCustomerBody,
+  async (req, res) => {
+    try {
+      const reqBody = req.body;
+      const { customer_id, reference_id } = reqBody.data.subscription;
 
-    // If the customer_id is null
-    if (!customer_id)
-      return res
-        .status(400)
-        .send({ msg: "Customer_Id is required in Request body" });
+      const customerDetail = await PaymentStatusModel.findOne({
+        customer_id,
+        reference_id,
+      });
 
-    const customerDetail = await PaymentStatusModel.findOne({ customer_id });
+      // Check if the customer already exists
+      if (customerDetail) return res.status(200).send(customerDetail);
 
-    // Check if the customer already exists
-    if (customerDetail) return res.status(200).send(customerDetail);
+      // If not create a new Document in mongoDB
+      const paymentStatus = new PaymentStatusModel({
+        customer_id,
+        reference_id,
+      });
 
-    // If not create a new Document in mongoDB
-    const paymentStatus = new PaymentStatusModel({
-      customer_id,
-    });
+      await paymentStatus.save();
 
-    await paymentStatus.save();
-
-    res.status(201).send(paymentStatus);
-  } catch (err) {
-    console.log(err);
-    res.status(500).send({ msg: err.message });
+      res.status(201).send(paymentStatus);
+    } catch (err) {
+      console.log(err);
+      res.status(500).send({ msg: err.message });
+    }
   }
-});
+);
 
 // ROUTE: POST api/webhooks/updatePaymentStatus
 router.post("/updatePaymentStatus", validatePaymentStatus, async (req, res) => {
@@ -72,5 +79,18 @@ router.post("/updatePaymentStatus", validatePaymentStatus, async (req, res) => {
     res.status(500).send({ msg: err.message });
   }
 });
+
+// ROUTE: POST api/webhooks/updatePaymentStatus
+// router.post("/updatePaymentStatus", async (req, res) => {
+//   try {
+//     const { invoice_id } = req.body?.data?.invoice ?? {};
+
+    
+    
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).send({ msg: err.message });
+//   }
+// });
 
 module.exports = router;
