@@ -1,24 +1,29 @@
 const validatePaymentStatus = (req, res, next) => {
-    try {
+  try {
+    const fieldNotPresent = [];
 
-        const fieldNotPresent = [];
+    const reqBody = req.body;
 
-        const reqBody = req.body;
+    const { status, customer_id } = reqBody?.data?.invoice ?? {};
+    console.log(reqBody.data.invoice.payments)
+    const { payment_id } = reqBody?.data?.invoice?.payments ?? {};
 
-        const { status, payment_id, customer_id} = reqBody.data.payment;
+    if (!status) fieldNotPresent.push("Status");
+    if (!payment_id) fieldNotPresent.push("Payment_id");
+    if (!customer_id) fieldNotPresent.push("Customer_id");
 
-        if(!status) fieldNotPresent.push("Status")
-        if(!payment_id) fieldNotPresent.push("Payment_id");
-        if(!customer_id) fieldNotPresent.push("Customer_id");
+    if (fieldNotPresent.length > 0)
+      return res
+        .status(400)
+        .send({
+          msg: `These Fields are required ${fieldNotPresent.toString()}`,
+        });
 
-        if(fieldNotPresent.length > 0) return res.status(400).send({msg: `These Fields are required ${fieldNotPresent.toString()}`})
-
-        next();
-    }catch(err) {
-        console.log(err);
-        return res.status(500).send({ msg: err.message });
-    }
-}
-
+    next();
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send({ msg: err.message });
+  }
+};
 
 module.exports = validatePaymentStatus;

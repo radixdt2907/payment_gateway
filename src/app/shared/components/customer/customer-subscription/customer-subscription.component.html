@@ -1,2 +1,4 @@
-<p>customer-subscription works!</p>
-<app-customer-subscription-card></app-customer-subscription-card>
+<app-customer-subscription-card
+  *ngFor="let subscription of subscriptionList"
+  [subscription]="subscription"
+></app-customer-subscription-card>

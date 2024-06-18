@@ -21,6 +21,7 @@ import { CustomerSubscriptionComponent } from './shared/components/customer/cust
 import { CustomerPaymentHistoryComponent } from './shared/components/customer/customer-payment-history/customer-payment-history.component';
 import { MainComponent } from './shared/components/main/main.component';
 import { CustomerSubscriptionCardComponent } from './shared/components/customer/customer-subscription/customer-subscription-card/customer-subscription-card.component';
+import { CustomerPaymentHistoryCardComponent } from './shared/components/customer/customer-payment-history/customer-payment-history-card/customer-payment-history-card.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CustomerSubscriptionCardComponent } from './shared/components/customer/
     CustomerPaymentHistoryComponent,
     MainComponent,
     CustomerSubscriptionCardComponent,
+    CustomerPaymentHistoryCardComponent,
   ],
   imports: [
     MaterialModule,

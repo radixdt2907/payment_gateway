@@ -5,5 +5,5 @@
   [currSelectedCustomer]="currSelectedData.form.get('customer')?.value"
   (cardClick)="handleCustomerCardClick(customer)"
   (getAllSubscriptionsClick)="handleGetAllSubscriptionsClick(customer.customer_id)"
-  (paymentHistoryClick)="handlePaymentHistoryClick()"
+  (paymentHistoryClick)="handlePaymentHistoryClick(customer.customer_id)"
 ></app-customer-card>

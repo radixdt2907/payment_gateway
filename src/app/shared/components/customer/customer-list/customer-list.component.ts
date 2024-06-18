@@ -19,8 +19,11 @@ export class CustomerListComponent {
   protected handleCustomerCardClick = (customer: CustomerModel): void =>
     this.currSelectedData.updateCustomer(customer);
 
-  protected handleGetAllSubscriptionsClick = (customer_id: string) => 
-    this.router.navigate(['customer-subscriptions'], {queryParams: {customer_id}})
+  protected handleGetAllSubscriptionsClick = (customer_id: string) =>
+    this.router.navigate(['customer-subscriptions'], {
+      queryParams: { customer_id },
+    });
 
-  protected handlePaymentHistoryClick = () => {};
+  protected handlePaymentHistoryClick = (customer_id: string) =>
+    this.router.navigate(['payment-history'], { queryParams: { customer_id } });
 }

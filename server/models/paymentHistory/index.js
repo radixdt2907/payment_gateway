@@ -6,10 +6,12 @@ const paymentObject = new Schema({
     require: false,
     type: String,
   },
-  status: {
+});
+
+const subscriptionObject = new Schema({
+  subscription_id: {
+    require: true,
     type: String,
-    enum: ["PROCESSING", "SUCCESS", "FAILURE"],
-    default: "PROCESSING",
   },
 });
 
@@ -18,7 +20,18 @@ const paymentStatusSchema = new Schema({
     require: true,
     type: String,
   },
-  payment: [paymentObject],
+  invoice_id: {
+    type: String
+  },
+  reference_id: {
+    type: String
+  },
+  payments: [paymentObject],
+  subscriptions: [subscriptionObject],
+  status: {
+    type: String,
+    default: "PROCESSING",
+  },
 });
 
 module.exports = mongoose.model("PaymentStatus", paymentStatusSchema);

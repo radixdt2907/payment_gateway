@@ -1,1 +1,21 @@
-<p>customer-subscription-card works!</p>
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title
+      >{{ subscription.plan_name }}
+      <mat-chip>#{{
+        subscription.subscription_number
+      }}</mat-chip></mat-card-title
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <p>Activated at: {{ subscription.activated_at }}</p>
+    <p>Next Billing at: {{ subscription.next_billing_at }}</p>
+  </mat-card-content>
+  <mat-card-footer class="example-card-footer">
+    <mat-chip-set aria-label="Chihuahua traits">
+      <mat-chip>charming</mat-chip>
+      <mat-chip>graceful</mat-chip>
+      <mat-chip>sassy</mat-chip>
+    </mat-chip-set>
+  </mat-card-footer>
+</mat-card>
