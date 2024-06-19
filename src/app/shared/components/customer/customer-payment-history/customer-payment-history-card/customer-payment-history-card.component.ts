@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-customer-payment-history-card',
@@ -9,5 +9,5 @@ export class CustomerPaymentHistoryCardComponent {
   
   @Input() paymentHistoryObj: any;
 
-  readonly panelOpenState = signal(false);
+  // readonly panelOpenState = signal(false);
 }
