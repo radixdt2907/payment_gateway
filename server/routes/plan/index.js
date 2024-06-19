@@ -1,16 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const ZohoService = require("../../services/zoho.service");
+const {
+  validateToken,
+  tokenService,
+} = require("../../middlewares/validate-token.middleware");
 
-const zohoService = new ZohoService(
-  process.env.ZOHO_BASE_URL,
-  process.env.OAUTH_TOKEN,
-  process.env.ORGANIZATION_ID
-);
 
 // ROUTE: GET api/plan
-router.get("/", async (req, res) => {
+router.get("/",validateToken, async (req, res) => {
   try {
+    const zohoService = new ZohoService(
+      process.env.ZOHO_BASE_URL,
+      tokenService.OAUTH_TOKEN,
+      process.env.ORGANIZATION_ID
+    );
+
     const plans = await zohoService.getPlanAsync();
     res.status(plans.status).send(plans.data);
   } catch (err) {

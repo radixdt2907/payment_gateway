@@ -5,16 +5,21 @@ const {
   validateCustomer,
   customerValidationRule,
 } = require("../../middlewares/validate-customer.middleware");
-
-const zohoService = new ZohoService(
-  process.env.ZOHO_BASE_URL,
-  process.env.OAUTH_TOKEN,
-  process.env.ORGANIZATION_ID
-);
+const {
+  validateToken,
+  tokenService,
+} = require("../../middlewares/validate-token.middleware");
 
 // ROUTE: GET api/customer
-router.get("/", async (req, res) => {
+router.get("/", validateToken, async (req, res) => {
   try {
+
+    const zohoService = new ZohoService(
+      process.env.ZOHO_BASE_URL,
+      tokenService.OAUTH_TOKEN,
+      process.env.ORGANIZATION_ID
+    );
+
     const customers = await zohoService.getCustomersAsync();
     res.status(customers.status).send(customers.data);
   } catch (err) {
@@ -26,6 +31,7 @@ router.get("/", async (req, res) => {
 // ROUTE: POST api/customer
 router.post(
   "/",
+  validateToken,
   customerValidationRule(),
   validateCustomer,
   async (req, res) => {
@@ -35,6 +41,13 @@ router.post(
         email,
         display_name,
       };
+
+      const zohoService = new ZohoService(
+        process.env.ZOHO_BASE_URL,
+        tokenService.OAUTH_TOKEN,
+        process.env.ORGANIZATION_ID
+      );
+
       const customer = await zohoService.createCustomerAsync(customerConfig);
       res.status(customer.status).send(customer.data);
     } catch (err) {

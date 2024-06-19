@@ -5,13 +5,6 @@ const {
   validateCustomerParam,
 } = require("../../middlewares/validate-customer-param.middleware");
 const paymentHistoryModel = require("../../models/paymentHistory");
-const ZohoService = require("../../services/zoho.service");
-
-const zohoService = new ZohoService(
-  process.env.ZOHO_BASE_URL,
-  process.env.OAUTH_TOKEN,
-  process.env.ORGANIZATION_ID
-);
 
 // ROUTE: GET api/payment/get-payment-history
 router.get(

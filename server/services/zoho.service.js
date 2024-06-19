@@ -1,4 +1,4 @@
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 
 const axiosFactory = require("./axios.service");
 
@@ -86,8 +86,8 @@ class ZohoService {
       // Injecting random reference Id
       data = {
         ...data,
-        reference_id: uuidv4()
-      }
+        reference_id: uuidv4(),
+      };
       return await this.axios
         .post("/hostedpages/newsubscription", data)
         .then((response) => {
@@ -125,10 +125,33 @@ class ZohoService {
   // Payment
   async getPaymentHistoryAsync(customer_id) {
     try {
-
-    }catch (error) {
+      // TODO REMOVE
+    } catch (error) {
       throw new Error(
         "Failed to fetch Payment Info from Zoho API: " + error.message
+      );
+    }
+  }
+
+  // Token
+  async generateAccessTokenFromRefreshTokenAsync(data) {
+    try {
+      return await this.axios
+        .post("/token", data, {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        })
+        .then((response) => {
+          return response;
+        })
+        .catch(({ response }) => {
+          return response;
+        });
+    } catch (error) {
+      throw new Error(
+        "Error while Generating the Access Token From Refresh Token: " +
+          error.message
       );
     }
   }
