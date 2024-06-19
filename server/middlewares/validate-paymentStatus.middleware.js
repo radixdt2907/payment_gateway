@@ -4,9 +4,8 @@ const validatePaymentStatus = (req, res, next) => {
 
     const reqBody = req.body;
 
-    const { status, customer_id } = reqBody?.data?.invoice ?? {};
-    console.log(reqBody.data.invoice.payments)
-    const { payment_id } = reqBody?.data?.invoice?.payments ?? {};
+    // const { status, customer_id } = reqBody?.data?.invoice ?? {};
+    const { payment_id , customer_id, status} = reqBody?.data?.payment ?? {};
 
     if (!status) fieldNotPresent.push("Status");
     if (!payment_id) fieldNotPresent.push("Payment_id");
