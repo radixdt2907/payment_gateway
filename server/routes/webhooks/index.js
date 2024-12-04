@@ -45,6 +45,7 @@ router.post(
 router.post("/updatePaymentStatus", validatePaymentStatus, async (req, res) => {
   try {
     const reqBody = req.body;
+    console.log(reqBody);
     const { status, payment_id, customer_id } = reqBody.data.payment;
 
     const foundedCustomerPaymentStatus = await PaymentStatusModel.findOne({

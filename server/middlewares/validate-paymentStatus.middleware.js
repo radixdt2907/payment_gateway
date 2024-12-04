@@ -1,7 +1,7 @@
 const validatePaymentStatus = (req, res, next) => {
   try {
     const fieldNotPresent = [];
-
+    console.log(req.body)
     const reqBody = req.body;
 
     // const { status, customer_id } = reqBody?.data?.invoice ?? {};
